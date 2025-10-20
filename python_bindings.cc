@@ -22,6 +22,13 @@ PYBIND11_MODULE(fde, m) {
 
     py::class_<fde::FixedDimensionalEncodingConfig>(m, "FDEConfig")
         .def(py::init<>())
+        .def(py::init<const fde::FixedDimensionalEncodingConfig&>())
+        .def("__copy__", [](const fde::FixedDimensionalEncodingConfig& self) {
+            return fde::FixedDimensionalEncodingConfig(self);
+        })
+        .def("__deepcopy__", [](const fde::FixedDimensionalEncodingConfig& self, py::dict) {
+            return fde::FixedDimensionalEncodingConfig(self);
+        })
         .def_readwrite("dimension", &fde::FixedDimensionalEncodingConfig::dimension)
         .def_readwrite("num_repetitions", &fde::FixedDimensionalEncodingConfig::num_repetitions)
         .def_readwrite("num_simhash_projections", &fde::FixedDimensionalEncodingConfig::num_simhash_projections)

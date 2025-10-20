@@ -6,7 +6,6 @@
 namespace fde {
 
 // Configuration for Fixed Dimensional Encoding generation.
-// Replaces the Protocol Buffer version for standalone use.
 struct FixedDimensionalEncodingConfig {
   // How embeddings are added to the FDE.
   enum EncodingType {
